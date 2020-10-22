@@ -1,5 +1,6 @@
 package com.example.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -11,9 +12,7 @@ import org.springframework.stereotype.Repository;
  * @Date: 2018/9/26 0026
  * @Time: 15:20
  */
-@Repository
-@Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
     User Sel(String id);
 }

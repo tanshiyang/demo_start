@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
  * @Author:wjup
  * @Date: 2018/9/26 0026
@@ -18,11 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
+    @Resource
     private UserService userService;
 
     @RequestMapping("getUser/{id}")
     public String GetUser(@PathVariable String id){
+//        return userService.Sel(id).toString();
+        return userService.getById(id).toString();
+    }
+
+    @RequestMapping("getUserBySQL/{id}")
+    public String GetUserBySQL(@PathVariable String id){
         return userService.Sel(id).toString();
     }
 }

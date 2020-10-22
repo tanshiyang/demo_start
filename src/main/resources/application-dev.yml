@@ -11,9 +11,11 @@ spring:
     host: 169.254.109.128
     port: 6379
 
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.example.entity
+  configuration:
+    mapUnderscoreToCamelCase: false
 
 logging:
   level:
