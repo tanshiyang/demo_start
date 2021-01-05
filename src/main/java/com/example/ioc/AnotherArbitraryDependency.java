@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class AnotherArbitraryDependency extends ArbitraryDependency {
     private final String label = "Another Arbitrary Dependency";
 
+    @Override
     public String toString() {
         return label;
     }

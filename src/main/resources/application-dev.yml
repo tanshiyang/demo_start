@@ -16,9 +16,16 @@ mybatis-plus:
   type-aliases-package: com.example.entity
   configuration:
     mapUnderscoreToCamelCase: false
+  global-config:
+    db-config:
+      id-type: 3
 
 logging:
   level:
     com:
       example:
         mapper : debug
+      baomidou:
+        ant:
+          mycode:
+            mapper: debug

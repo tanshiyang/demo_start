@@ -1,6 +1,6 @@
 package com.example.logging;
 
-import com.example.model.ZGH_User;
+import com.example.model.ZghUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +13,7 @@ public class TestController {
     public String test_log(){
         log.info("#########  info  #########");
 
-        ZGH_User user = new ZGH_User();
+        ZghUser user = new ZghUser();
         user.setUserId("PCITTSY");
         user.setUserName("谭世阳");
 

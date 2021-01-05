@@ -6,8 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @Slf4j
-@MapperScan("com.example.mapper")
-@SpringBootApplication
+@MapperScan({"com.example.mapper","com.baomidou.ant.mycode.mapper"})
+@SpringBootApplication(scanBasePackages = "com")
 public class DemoApplication {
 
 	public static void main(String[] args) {
