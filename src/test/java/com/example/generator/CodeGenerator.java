@@ -12,6 +12,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 // 演示例子，执行 main 方法控制台输入模块表名回车自动生成对应项目目录中
@@ -69,6 +70,17 @@ public class CodeGenerator {
             @Override
             public void initMap() {
                 // to do nothing
+                System.out.println("");
+            }
+
+            @Override
+            public void initTableMap(TableInfo tableInfo) {
+                super.initTableMap(tableInfo);
+            }
+
+            @Override
+            public Map<String, Object> prepareObjectMap(Map<String, Object> objectMap) {
+                return super.prepareObjectMap(objectMap);
             }
         };
 
@@ -87,7 +99,10 @@ public class CodeGenerator {
                 return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
+
+
         });
+
         /*
         cfg.setFileCreate(new IFileCreate() {
             @Override

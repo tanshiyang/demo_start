@@ -103,6 +103,20 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.tmatesoft.svnkit/svnkit -->
+        <dependency>
+            <groupId>org.tmatesoft.svnkit</groupId>
+            <artifactId>svnkit</artifactId>
+            <version>1.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
