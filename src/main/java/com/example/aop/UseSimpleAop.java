@@ -4,8 +4,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UseSimpleAop {
-    @AdminOnly
-    public void justPrint() {
-        System.out.println("test");
+    @PrintSomethingAnnotation(value =  "zhangshan")
+    public String justPrint(String content) {
+        content = "hello "+ content;
+        System.out.println(content);
+        return content;
     }
 }

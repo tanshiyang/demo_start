@@ -23,13 +23,16 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    private String testString;
+
     @RequestMapping("getUser/{id}")
-    public String GetUser(@PathVariable String id){
+    public String GetUser(@PathVariable String id) {
+        testString = id;
         return userService.getById(id).toString();
     }
 
     @RequestMapping("getUserBySQL/{id}")
-    public String GetUserBySQL(@PathVariable String id){
+    public String GetUserBySQL(@PathVariable String id) {
         return userService.Sel(id).toString();
     }
 }

@@ -21,6 +21,6 @@ public class UseSimpleAopTest extends TestCase {
 
     @Test
     public void testJustPrint() {
-        useSimpleAop.justPrint();
+        useSimpleAop.justPrint("world");
     }
 }

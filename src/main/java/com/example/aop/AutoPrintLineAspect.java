@@ -1,28 +1,32 @@
 package com.example.aop;
 
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class AutoPrintLineAspect {
 
-    @Pointcut("@annotation(AdminOnly)")
-    public void adminOnly()
+    @Pointcut("@annotation(com.example.aop.PrintSomethingAnnotation)")
+    public void printSomethingPointcut()
     {
-        System.out.println("Admin Only");
     }
 
-    @Before("adminOnly()")
-    public void beforeAdminOnly(){
-        System.out.println("Before Admin Only");
+    @Before("printSomethingPointcut() && @annotation(printSomethingAnnotation)")
+    public void beforePrintSomething(JoinPoint joinPoint, PrintSomethingAnnotation printSomethingAnnotation) throws Exception {
+        System.out.println("Before PrintSomething");
+        System.out.println("PrintSomethingAnnotation value:" + printSomethingAnnotation.value());
+        System.out.println("PrintSomethingAnnotation description:" + printSomethingAnnotation.description());
     }
 
-    @After("adminOnly()")
-    public void afterAdminOnly(){
-        System.out.println("After Admin Only");
+    @After("printSomethingPointcut()")
+    public void afterPrintSomething(){
+        System.out.println("After PrintSomething");
+    }
+
+    @AfterReturning(value = "printSomethingPointcut() && @annotation(printSomethingAnnotation)", returning = "value")
+    public void afterReturnPrintSomething(PrintSomethingAnnotation printSomethingAnnotation, Object value){
+
     }
 }
