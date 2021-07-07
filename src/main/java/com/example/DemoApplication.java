@@ -24,7 +24,7 @@ public class DemoApplication {
 		return args -> {
 
 			String[] beans = appContext.getBeanDefinitionNames();
-			Arrays.stream(beans).sorted().forEach(System.out::println);
+//			Arrays.stream(beans).sorted().forEach(System.out::println);
 
 		};
 	}

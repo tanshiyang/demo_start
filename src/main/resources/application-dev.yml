@@ -1,12 +1,48 @@
 server:
-  port: 8082
+  port: 4040
 
 spring:
+  # 上传文件总的最大值
+  # spring.servlet.multipart.max-request-size=10MB
+  # 单个文件的最大值
+  # spring.servlet.multipart.max-file-size=10MB
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 10MB
   datasource:
-    username: root
-    password: 123123
-    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123123
+      url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #Oracle需要打开注释
+      #validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        #login-username: admin
+        #login-password: admin
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
   redis:
     host: 169.254.109.128
     port: 6379
@@ -19,6 +55,8 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: 3
+      logic-delete-value: UNIX_TIMESTAMP()
+      logic-not-delete-value: 0
 
 logging:
   level:
